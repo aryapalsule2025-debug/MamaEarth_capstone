@@ -1,0 +1,137 @@
+
+=======================================================
+MAMAEARTH RETURNS & GROWTH INTELLIGENCE
+=======================================================
+
+--- Original data dimensions ---
+Customers: (45, 6)
+Products: (16, 4)
+Orders: (180, 9)
+
+--- Missing values before cleaning ---
+order_id           0
+customer_id        0
+product_id         0
+order_date         0
+quantity           0
+discount_pct      12
+payment_method     0
+rating            15
+returned           0
+dtype: int64
+
+--- Raw payment-method values ---
+Card    56
+UPI     53
+COD     50
+CARD     7
+card     7
+cod      5
+upi      2
+Name: payment_method, dtype: int64
+
+Raw distinct payment-method values: 7
+
+--- Suspected duplicate orders ---
+Duplicate rows: 5
+Duplicate order IDs: ['O0176', 'O0177', 'O0178', 'O0179', 'O0180']
+
+--- Raw revenue checks ---
+Order count: 180
+Total revenue: Rs. 99860.2
+Average revenue per order: Rs. 554.78
+Duplicate revenue: Rs. 2501.9
+
+--- Cleaning summary ---
+Rows before cleaning: 180
+Rows after cleaning: 175
+Rows removed as duplicates: 5
+Missing discounts filled: 12
+Missing ratings filled: 15
+Median rating used: 3.0
+
+--- Missing values after cleaning ---
+order_id          0
+customer_id       0
+product_id        0
+order_date        0
+quantity          0
+discount_pct      0
+payment_method    0
+rating            0
+returned          0
+dtype: int64
+
+--- Standardized payment methods ---
+CARD    68
+COD     54
+UPI     53
+Name: payment_method, dtype: Int64
+
+--- Cleaned business metrics ---
+Cleaned orders: 175
+Cleaned revenue: Rs. 97358.3
+Returned orders: 44
+Overall return rate (%): 25.14
+
+--- Return rate by payment method ---
+                orders  returned_orders  revenue  return_rate_pct
+payment_method                                                   
+CARD                68               10  33129.1            14.71
+COD                 54               24  39036.1            44.44
+UPI                 53               10  25193.1            18.87
+
+--- COD return rate by city tier ---
+           orders  returned_orders  return_rate_pct
+city_tier                                          
+1              32               12            37.50
+2              22               12            54.55
+Highest-risk COD city tier: 2
+
+--- Correlation matrix (Pearson) ---
+              rating  returned  discount_pct  quantity
+rating        1.0000   -0.1015        0.0427   -0.0980
+returned     -0.1015    1.0000       -0.0880    0.0406
+discount_pct  0.0427   -0.0880        1.0000   -0.1704
+quantity     -0.0980    0.0406       -0.1704    1.0000
+
+--- Six unique correlation pairs ---
+rating_vs_returned | r = -0.1015 | Weak | Negative
+rating_vs_discount_pct | r = 0.0427 | Negligible | Positive
+rating_vs_quantity | r = -0.098 | Negligible | Negative
+returned_vs_discount_pct | r = -0.088 | Negligible | Negative
+returned_vs_quantity | r = 0.0406 | Negligible | Positive
+discount_pct_vs_quantity | r = -0.1704 | Weak | Negative
+
+--- Quantity outlier check ---
+Q1: 1.0
+Q3: 2.0
+IQR: 1.0
+Lower bound: -0.5
+Upper bound: 3.5
+Flagged orders:
+order_id  quantity
+   O0011        25
+   O0098        30
+
+--- Monthly cleaned revenue ---
+month
+2026-01    29582.1
+2026-02    13195.5
+2026-03    20318.9
+2026-04     9495.3
+2026-05    13151.1
+2026-06    11615.4
+Name: revenue, dtype: float64
+
+--- Adjusted monthly revenue (outliers excluded for sensitivity) ---
+month
+2026-01    11637.1
+2026-02    13195.5
+2026-03    20318.9
+2026-04     9495.3
+2026-05    13151.1
+2026-06    11615.4
+Name: revenue, dtype: float64
+Full-data peak month: 2026-01
+Adjusted peak month: 2026-03

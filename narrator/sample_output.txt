@@ -1,0 +1,20 @@
+MAMAEARTH RETURNS & GROWTH INTELLIGENCE
+
+SITUATION
+The dataset contains 180 original orders. After removing 5 duplicate business records, 175 orders remain for analysis. Cleaned revenue is Rs. 97,358.30, compared with raw revenue of Rs. 99,860.20.
+The overall return rate is 25.14% (44 returned orders out of 175 cleaned orders).
+
+COMPLICATION
+COD has a return rate of 44.44% (24 of 54 orders), compared with 14.71% for card payments (10 of 68).
+Among COD orders, Tier 2 has the highest observed return rate at 54.55% (12 of 22 orders).
+Removing 5 duplicate records reduced calculated revenue by Rs. 2,501.90. Data cleaning also filled 12 missing discounts with zero and 15 missing ratings with the median rating of 3.0.
+The discount-return correlation is -0.0880, classified as negligible. This indicates no meaningful linear relationship in this dataset; it does not establish causation.
+Full-data revenue peaks in 2026-01 at Rs. 29,582.10. In the adjusted sensitivity analysis, which excludes flagged quantity outliers, the peak shifts to 2026-03 at Rs. 20,318.90.
+The flagged orders are O0011, O0098. They remain in the main cleaned dataset; they are excluded only from the adjusted sensitivity analysis.
+
+RESOLUTION
+Investigate the COD order journey, particularly customer confirmation, delivery refusal, and recorded return reasons. Compare outcomes across city tiers before changing the payment or delivery process.
+Review the flagged bulk orders to determine whether they represent legitimate purchases or data-quality issues. Retain legitimate orders in the main analysis.
+Continue validating duplicate orders, missing values, and payment-method labels. Monitor return rates and monthly revenue over time before drawing conclusions.
+
+Note: Observed associations do not prove cause and effect.
