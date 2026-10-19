@@ -198,7 +198,7 @@ def generate_scr_narrative(findings: dict) -> dict:
     Return a structured success or error result.
     """
 
-    api_key = os.environ.get("MY_API_KEY")
+    api_key = os.environ.get("GEMINI_API_KEY")
 
     if not api_key:
         return {
